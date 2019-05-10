@@ -32,7 +32,8 @@ for each_info in all_info:
     picture_str_lst = each_info[7].split('@')
     picture = picture_str_lst[0]
 
-    averating = each_info[8]
+    averating_pre = float(each_info[8])/2
+    averating = round(averating_pre,1)
 
     numrating_str = each_info[9]
     num_str_lst = re.findall(r"[\d+\.\d]*",numrating_str)
@@ -43,7 +44,7 @@ for each_info in all_info:
         numrating = int(num_str_lst[0])
 
     description = each_info[10]
-    backpos = each_info[7]
+    backpos = picture
     try:
         # 执行sql语句
         cursor.execute(sql_input,(mv_id,moviename,releasedate,nation,directors,leadactors,editors,
